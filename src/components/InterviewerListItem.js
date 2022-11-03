@@ -7,6 +7,11 @@ export default function InterviewerListItem(props) {
   const interviewerClass = classNames('interviewers__item', 
   {'interviewers__item--selected' : props.selected});
 
+  const formatSpots = (props) => {
+    const spots = props.selected ? props.name : "";
+    return spots;
+  }
+
 
   return (
     <li onClick={() => props.setInterviewer(props.id)} 
@@ -16,7 +21,7 @@ export default function InterviewerListItem(props) {
     src={props.avatar}
     alt={props.name}
   />
-  {props.name}
+  {formatSpots(props)}
 </li>
   );
 }
