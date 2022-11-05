@@ -28,7 +28,13 @@ export default function Application(props) {
   }) 
 
   useEffect(() => {
-    
+    Promise.all([
+      axios.get('/api/days'),
+      axios.get('/api/appointments')
+    ]).then((all) => {
+      setState(state => ({...state, days: all[0].data, appointments: all[1].data }));
+    })
+
   }, [])
 
   return (
