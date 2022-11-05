@@ -45,12 +45,16 @@ const appointments = {
   }
 };
 
+
 export default function Application(props) {
   const [state, setState] = useState ({
     day: 'Monday',
     days: []
   })
-  
+
+  const setDay = day => setState({ ...state, day});
+  const setDays = days => setState(prev => ({ ...prev, days}));
+
   const appointmentList = Object.values(appointments).map(appointment => {
     return (
       <Appointment 
