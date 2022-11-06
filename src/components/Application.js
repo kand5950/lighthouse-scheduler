@@ -40,8 +40,7 @@ export default function Application(props) {
       axios.get('/api/appointments'),
       axios.get('/api/interviewers')
     ]).then((all) => {
-      setState(state => ({...state, days: all[0].data, appointments: all[1].data }));
-      console.log(all[2]);
+      setState(state => ({...state, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
     })
 
   }, [])
