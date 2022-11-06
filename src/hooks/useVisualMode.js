@@ -9,8 +9,11 @@ export default function useVisualMode(initial) {
     setHistory(history => [...history, newMode])}; //adds newMode to history [initial, newMode]
   
     const back = () => {
+
+      if (history.length === 1) return; //doesnt allow user to go past initial mode
       setHistory(history => history.slice(0, history.length -1)); //makes a new history without last index
       setMode(history[history.length-2]); //sets the mode to the previous item in history array
+
     };
 
   return {
