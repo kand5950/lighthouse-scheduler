@@ -8,11 +8,14 @@ import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
 export default function Application(props) {
+
+  const bookInterview = (id, interview) => console.log(id,interview);
+
   const [state, setState] = useState ({
     day: 'Monday',
     days: [],
     appointments: {},
-    interviewers: {}
+    interviewers: {},
   });
 
   const setDay = day => setState(state => ({ ...state, day}));
@@ -38,6 +41,7 @@ export default function Application(props) {
         {...appointment}
         interview={interview}
         interviewers={dailyInterviewers}
+        bookInterview={bookInterview}
       />
     )
   }) 
