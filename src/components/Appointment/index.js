@@ -21,6 +21,7 @@ export default function Appointment(props) {
       interviewer,
     };
     bookInterview(id, interview);
+    transition(SHOW);
   }
   
   const { mode, transition, back } = useVisualMode(
