@@ -20,8 +20,8 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
-    bookInterview(id, interview);
-    transition(SHOW);
+    bookInterview(id, interview)
+    .then(() => transition(SHOW));
   }
   
   const { mode, transition, back } = useVisualMode(
