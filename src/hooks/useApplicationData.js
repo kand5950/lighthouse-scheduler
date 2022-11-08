@@ -23,11 +23,11 @@ export default function useApplicationData(initial) {
 
   }, [])
 
-  //updates spots available after appointments from state changes
-  useEffect(() => {
-    axios.get('/api/days')
-      .then(days => setState(state => ({...state, days: days.data})));
-  }, [state.appointments])
+  // //updates spots available after appointments from state changes
+  // useEffect(() => {
+  //   axios.get('/api/days')
+  //     .then(days => setState(state => ({...state, days: days.data})));
+  // }, [state.appointments])
 
   const bookInterview = (id, interview) => {
     
@@ -39,9 +39,9 @@ export default function useApplicationData(initial) {
       ...state.appointments,
       [id]: appointment
     };
-    
+    const days = updateSpots(state, appointments);
     return axios.put(`/api/appointments/${id}`, { interview })
-      .then(() => setState(state => ({...state, appointments})))
+      .then(() => setState(state => ({...state, appointments, days})))
   };
 
   const cancelInterview = (id) => {
@@ -53,10 +53,25 @@ export default function useApplicationData(initial) {
       ...state.appointments,
       [id]:appointment
     };
-
+    const days = updateSpots(state, appointments);
     return axios.delete(`/api/appointments/${id}`)
-      .then(() => setState(state => ({...state, appointments})))
+      .then(() => setState(state => ({...state, appointments, days})))
   };
+
+  const updateSpots = (state, appointments) => {
+    const days = [...state.days]
+    return days.map(day => {
+      const newDay = {...day}
+      let spots = 0;
+      newDay.appointments.forEach(id => {
+        if(appointments[id].interview === null) {
+          spots++;
+        }
+      })
+      newDay.spots = spots;
+      return newDay;
+    })
+  }
   
   return {
     state,
