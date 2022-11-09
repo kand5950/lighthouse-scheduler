@@ -6,9 +6,10 @@ import DayListItem from "components/DayListItem";
 
 afterEach(cleanup);
 
-it("renders without crashing", () => {
-  render(<DayListItem />);
-});
+// //renders without crashing arent useful since every other test in the same file renders the component
+// it("renders without crashing", () => {
+//   render(<DayListItem />);
+// });
 
 it("renders 'no spots remaining' when there are 0 spots", () => {
   const { getByText } = render(<DayListItem name="Monday" spots={0} />);

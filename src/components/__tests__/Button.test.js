@@ -6,9 +6,10 @@ import Button from "components/Button";
 
 afterEach(cleanup);
 
-it("renders without crashing", () => {
-  render(<Button />);
-});
+// // //renders without crashing arent useful since every other test in the same file renders the component
+// it("renders without crashing", () => {
+//   render(<Button />);
+// });
 
 it("renders its `children` prop as text", () => {
   const { getByText } = render(<Button>Default</Button>);
