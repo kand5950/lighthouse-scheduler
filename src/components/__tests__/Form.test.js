@@ -70,7 +70,7 @@ describe("Form", () => {
         interviewers={interviewers} 
         student="Lydia Miller-Jones" 
         onSave={onSave} 
-        interviewer={interviewers[0]}
+        interviewer={interviewers[0].id}
       />
     )
     /* 3. Click the save button */
