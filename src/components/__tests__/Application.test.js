@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, prettyDOM } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByAltText, getByPlaceholderText, queryByText } from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -102,7 +102,7 @@ describe("Application", () => {
     expect(getByText(day, /1 spot remaining/i)).toBeInTheDocument();
   });
 
-  it.only("shows the save error when failing to save an appointment", async() => {
+  it("shows the save error when failing to save an appointment", async() => {
     axios.put.mockRejectedValueOnce();
     const { container } = render(<Application />)
 
@@ -129,7 +129,30 @@ describe("Application", () => {
     expect(getByPlaceholderText(appointment, /enter student name/i)).toBeInTheDocument();
   });
 
-  it.only("shows the delete error when failing to delete an appointment", () => {
+  it("shows the delete error when failing to delete an appointment", async() => {
     axios.delete.mockRejectedValueOnce()
+    //Render the application.
+    const { container } = render(<Application />);
+    //Wait untio the text "Archie Cohen" is displayed.
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+    //Finds a booked appointment
+    const appointment = getAllByTestId(container, "appointment").find(
+      appointment => queryByText(appointment, "Archie Cohen")
+    );
+    //Click the "Delete" button on the first booked appointment.
+    fireEvent.click(getByAltText(appointment, "Delete"));
+    //Check that the confirmation message is shown
+    expect(getByText(appointment, /would you like to delete?/i)).toBeInTheDocument();
+    //Click the "Confirm" button 
+    fireEvent.click(getByText(appointment, "Confirm"));
+    //Check the validation after confirming delete
+    expect(getByText(appointment, "Deleting")).toBeInTheDocument();
+    //Check if error message shows up
+    await waitForElement(() => getByText(appointment, /unable to delete/i));
+    //fire close button
+    fireEvent.click(getByAltText(appointment, "Close"));
+    //check to see if sends back to form
+    expect(getByAltText(appointment, "Delete")).toBeInTheDocument();
   });
+    
 })
