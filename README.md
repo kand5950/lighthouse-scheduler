@@ -6,15 +6,15 @@ Interview Scheduler, is a full stack web app built with modern React where a use
 
 Gif of app
 : Preview of app
-!["gif of app"]()
+!["gif of app"](https://github.com/kand5950/lighthouse-scheduler/blob/master/docs/scheduler-gif.gif)
 
 Confrimation to delete
 : Cancel or confirm after clicking the delete button
-!["Confirm delete"]()
+!["Confirm delete"](https://github.com/kand5950/lighthouse-scheduler/blob/master/docs/confirm-delete.png)
 
 Appointment Form error
 : Error when either No name or interview selected pops up
-!["Error no name"]()
+!["Error no name"](https://github.com/kand5950/lighthouse-scheduler/blob/master/docs/name-blank.png)
 
 ## Dependencies
 
@@ -41,7 +41,7 @@ Application deeply tested with:
 ## Getting Started
 
 - Install all dependencies (using the `npm install` command).
-- Download and follow the instructions in (https://github.com/kand5950/scheduler-api "scheduler-api")
+- Download and follow the instructions in [scheduler-api](https://github.com/kand5950/scheduler-api)
 - Start API server in scheduler-api directory using npm start.
 - Run the Webpack development web server using the `npm start` command.
 - Enter http://localhost:8000/ in browser and start booking!
