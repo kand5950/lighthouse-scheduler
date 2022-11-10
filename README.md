@@ -5,7 +5,7 @@ Interview Scheduler, is a full stack web app built with modern React where a use
 ## Final Product
 
 Gif of app
-: Preview of app
+: Preview of application
 !["gif of app"](https://github.com/kand5950/lighthouse-scheduler/blob/master/docs/scheduler-gif.gif)
 
 Confrimation to delete
