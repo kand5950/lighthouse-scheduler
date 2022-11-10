@@ -1,23 +1,47 @@
 # Interview Scheduler
 
-## Setup
+Interview Scheduler, is a full stack web app built with modern React where a user can book, edit, & cancel interviews as they like.
 
-Install dependencies with `npm install`.
+## Final Product
 
-## Running Webpack Development Server
+Gif of app
+: Preview of app
+!["gif of app"]()
 
-```sh
-npm start
-```
+Confrimation to delete
+: Cancel or confirm after clicking the delete button
+!["Confirm delete"]()
 
-## Running Jest Test Framework
+Appointment Form error
+: Error when either No name or interview selected pops up
+!["Error no name"]()
 
-```sh
-npm test
-```
+## Dependencies
 
-## Running Storybook Visual Testbed
+- Node.js
+- Express
+- Axios
+- Classnames
+- React
+- Node-postgres
 
-```sh
-npm run storybook
-```
+## Testing & Tech
+
+Application built with:
+
+- Front-End: React, HTML, SCSS
+- Back-End: Express, Node, PostgreSQL
+
+Application deeply tested with:
+
+- Jest - unit & intergration testing
+- Storybook - unit testing
+- Cypress - end to end testing
+
+## Getting Started
+
+- Install all dependencies (using the `npm install` command).
+- Download and follow the instructions in (https://github.com/kand5950/scheduler-api "scheduler-api")
+- Start API server in scheduler-api directory using npm start.
+- Run the Webpack development web server using the `npm start` command.
+- Enter http://localhost:8000/ in browser and start booking!
